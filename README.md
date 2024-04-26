@@ -23,7 +23,8 @@ The source code was also imported using Flutterflow's built-in tools and built f
 # Custom code
 Custom code was used to write integration with the TonKeeper wallet and blockchain integration. Additionally, custom code was used for the code responsible for sending transactions.
 
-![img_1.png](images/img_1.png)
+<img src="images/img_1.png" alt="Deploy process" width="700" height="400">
+
 ### Init connection
 ```dart
 // Automatic FlutterFlow imports
@@ -116,4 +117,4 @@ The React application utilizes an iframe, which contains a link to the website t
 ## My contacts
 - [Telegram](https://t.me/ikustow)
 - [Linkedin](https://www.linkedin.com/in/ikustow/)
-- [email](mailto:ikustov.dev@gmail.com)
+- [Email](mailto:ikustov.dev@gmail.com)
