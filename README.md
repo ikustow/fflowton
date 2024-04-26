@@ -109,3 +109,8 @@ The React application utilizes an iframe, which contains a link to the website t
     <img src="images/img.png" alt="Описание 1" style="width: 200px; height: 300;">
     <img src="images/img_2.png" alt="Описание 2" style="width: 200px; height: 300;">
 </div>
+
+## My contacts
+- [Telegram](https://t.me/ikustow)
+- [Linkedin](https://www.linkedin.com/in/ikustow/)
+- [email](mailto:ikustov.dev@gmail.com)
