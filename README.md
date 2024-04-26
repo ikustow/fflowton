@@ -15,7 +15,7 @@ The source code was also imported using Flutterflow's built-in tools and built f
 | Backend                | Supabase       |
 
 # Deploy process
-![Deploy process](C:\Users\ikust\OneDrive\Desktop\Work\apps\donAppdev-ezgif.com-video-to-gif-converter.gif)
+![Deploy process](images/dep.gif)
 
 # Custom code
 Custom code was used to write integration with the TonKeeper wallet and blockchain integration. Additionally, custom code was used for the code responsible for sending transactions.
