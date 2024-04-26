@@ -14,6 +14,9 @@ The source code was also imported using Flutterflow's built-in tools and built f
 | Wallet                 | TonKeeper      |
 | Backend                | Supabase       |
 
+### Demo
+![Deploy process](images/appconnect.gif)
+
 # Deploy process
 ![Deploy process](images/dep.gif)
 
