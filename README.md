@@ -15,7 +15,7 @@ The source code was also imported using Flutterflow's built-in tools and built f
 | Backend                | Supabase       |
 
 ### Demo
-![Deploy process](images/appconnect.gif)
+<img src="images/appconnect.gif" alt="Deploy process" width="250" height="500">
 
 # Deploy process
 ![Deploy process](images/dep.gif)
