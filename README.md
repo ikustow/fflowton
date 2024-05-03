@@ -14,6 +14,29 @@ The source code was also imported using Flutterflow's built-in tools and built f
 | Wallet                 | TonKeeper      |
 | Backend                | Supabase       |
 
+
+**Project Summary: Donation Application with TON Blockchain Integration**
+
+DonApp is a sophisticated donation platform that leverages the power of the TON blockchain to facilitate secure and efficient donation transactions. The system consists of several key components, including:
+
+
+1. **TonKeeper Wallet Integration:** The application seamlessly integrates with TonKeeper wallet, providing users with a secure and convenient way to manage their funds and make donations.
+
+2. **Web Application (WebApp):** The WebApp serves as the central hub of the system, coordinating communication between the client interface, TonKeeper wallet, the TON blockchain bridge, and the database.
+
+3. **TON Blockchain Bridge:** The TON blockchain bridge acts as the intermediary between the application and the TON blockchain. It handles authentication, transaction requests, and data exchange to ensure smooth communication with the blockchain network.
+
+4. **Supabase Database:** Our system utilizes Supabase as the backend database to store user data, donation information, and transaction records securely.
+
+**Functionality Highlights:**
+
+- **Login Process:** Users can securely log in to the application using their credentials. The login process includes authentication through the TON blockchain using TonConnect.
+
+- **Donation Transactions:** Users can initiate donation transactions through their TonKeeper wallet. The system facilitates the creation of donation messages and handles transaction requests seamlessly.
+
+- **Data Management:** The application efficiently manages user data, donation details, and transaction information, ensuring accuracy and security at every step.
+
+Overall, the project aims to provide a robust and user-friendly platform for making donations using the TON blockchain, offering transparency, security, and efficiency in every transaction.
 ### Demo
 <img src="images/appconnect.gif" alt="Deploy process" width="250" height="500">
 
