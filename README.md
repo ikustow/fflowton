@@ -19,6 +19,75 @@ The source code was also imported using Flutterflow's built-in tools and built f
 
 # Deploy process
 ![Deploy process](images/dep.gif)
+## Sequence diagram
+![img.png](images/uml.png)
+
+<details>
+
+<summary>Plant UML</summary>
+
+```puml
+@startuml
+
+title donApp
+
+skinparam shadowing false
+skinparam actor {
+	BorderColor black
+	BackgroundColor white
+}
+skinparam participant {
+	BorderColor black
+	BackgroundColor #94de5e
+}
+skinparam sequence {
+    LifeLineBorderColor black
+}
+skinparam ArrowColor black
+skinparam noteBorderColor black
+
+actor Client
+participant "Tonkeeper" as wallet
+participant "WebApp" as webapp
+participant "TonBlockchain" as bridge
+database "supabase" as db
+
+
+group Login process
+Client -> webapp: Login
+activate webapp
+webapp -> bridge: TonConnect init
+
+activate bridge
+bridge --> webapp: Wallet connect \n settings
+webapp -> Client: QR
+Client -> wallet: Scan QR
+activate wallet
+wallet -> bridge: Wallet connection
+deactivate wallet
+bridge --> webapp: Account info
+deactivate bridge
+webapp -> db: get data
+activate db
+db -> webapp: result
+deactivate db
+end
+
+group Send message process
+webapp -> bridge: create message
+activate bridge
+bridge --> wallet: Transaction request
+activate wallet
+wallet -> bridge: send boc
+deactivate wallet
+bridge -> webapp: return
+deactivate bridge
+deactivate webapp
+end
+@enduml
+```
+
+</details>
 
 # Custom code
 Custom code was used to write integration with the TonKeeper wallet and blockchain integration. Additionally, custom code was used for the code responsible for sending transactions.
@@ -103,6 +172,7 @@ Future sendTrx(String link, int value) async {
   }
 }
 ```
+
 # TWA
 
 Additionally, the application was integrated into a Telegram bot. For this purpose, the No-Code builder Noodl was also used. Specifically, this builder allows generating React applications that are required for publication within the Telegram bot.
