@@ -20,6 +20,104 @@ The source code was also imported using Flutterflow's built-in tools and built f
 # Deploy process
 ![Deploy process](images/dep.gif)
 
+
+
+# User stories
+
+
+1. **Login to the Application**
+
+As a user, I want to log in to the application using my Tonkeeper wallet so that I can make a donation transaction.
+
+| Step | Participants | Action                                                       | Result                                                                                      |
+|------|--------------|--------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| 1    | Client | User logs into the application through the client interface. | -                                                                                           |
+| 2    | WebApp, Blockchain | WebApp initiates the TonConnect process for login.           | Blockchain returns authorization link                                                       |
+| 3    | Blockchain, Tonkeeper | TonConnect establishes a connection with the wallet.         | Blockchain returns account data, wallet address is saved                                    |
+| 4    | WebApp, Supabase | WebApp retrieves donate options from Supabase.          | The user successfully logs into the application and gains access to their donation options. |
+
+2. **Sending a Message**
+
+As a user, I want to make a donation through my wallet on the TON blockchain.
+
+| Step | Participants | Action | Result                                                                |
+|------|--------------|--------|-----------------------------------------------------------------------|
+| 1    | Client | User creates a message through the application's client interface. | -                                                                     |
+| 2    | WebApp, Blockchain | WebApp sends a request to Blockchain to create the message. | The client receives a push notification about the transaction         |
+| 3    | Client, Tonkeeper | The client confirms the transaction in the wallet| BOC message is generated                                              |
+| 4    | Blockchain, Tonkeeper | The wallet sends a BOC with transaction data to Blockchain. | The transaction is recorded in the blockchain                         |
+| 5    | Blockchain, WebApp | Blockchain completes the message creation process and returns the result to WebApp. | The message is successfully created and sent through the application. |
+
+# Sequence diagram
+![img.png](images/uml.png)
+
+<details>
+
+<summary>Plant UML</summary>
+
+```puml
+@startuml
+
+title donApp
+
+skinparam shadowing false
+skinparam actor {
+	BorderColor black
+	BackgroundColor white
+}
+skinparam participant {
+	BorderColor black
+	BackgroundColor #94de5e
+}
+skinparam sequence {
+    LifeLineBorderColor black
+}
+skinparam ArrowColor black
+skinparam noteBorderColor black
+
+actor Client
+participant "Tonkeeper" as wallet
+participant "WebApp" as webapp
+participant "TonBlockchain" as bridge
+database "supabase" as db
+
+
+group Login process
+Client -> webapp: Login
+activate webapp
+webapp -> bridge: TonConnect init
+
+activate bridge
+bridge --> webapp: Wallet connect \n settings
+webapp -> Client: QR
+Client -> wallet: Scan QR
+activate wallet
+wallet -> bridge: Wallet connection
+deactivate wallet
+bridge --> webapp: Account info
+deactivate bridge
+webapp -> db: get data
+activate db
+db -> webapp: result
+deactivate db
+end
+
+group Send message process
+webapp -> bridge: create message
+activate bridge
+bridge --> wallet: Transaction request
+activate wallet
+wallet -> bridge: send boc
+deactivate wallet
+bridge -> webapp: return
+deactivate bridge
+deactivate webapp
+end
+@enduml
+```
+
+</details>
+
 # Custom code
 Custom code was used to write integration with the TonKeeper wallet and blockchain integration. Additionally, custom code was used for the code responsible for sending transactions.
 
@@ -103,6 +201,7 @@ Future sendTrx(String link, int value) async {
   }
 }
 ```
+
 # TWA
 
 Additionally, the application was integrated into a Telegram bot. For this purpose, the No-Code builder Noodl was also used. Specifically, this builder allows generating React applications that are required for publication within the Telegram bot.
