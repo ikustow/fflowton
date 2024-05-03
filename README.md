@@ -105,7 +105,7 @@ As a user, I want to log in to the application using my Tonkeeper wallet so that
 | 3    | Blockchain, Tonkeeper | TonConnect establishes a connection with the wallet.         | Blockchain returns account data, wallet address is saved                                    |
 | 4    | WebApp, Supabase | WebApp retrieves donate options from Supabase.          | The user successfully logs into the application and gains access to their donation options. |
 
-2. **Sending a Message**
+2. **Sending a transaction**
 
 As a user, I want to make a donation through my wallet on the TON blockchain.
 
